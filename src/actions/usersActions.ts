@@ -1,5 +1,5 @@
 import { IUser } from "../models/IUser";
-import { AppDispatch } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 import { makeRequest } from "../utils/makeRequest";
 import { Action } from "./actions";
 
@@ -20,7 +20,10 @@ export const addUser = (user: IUser): AddUserAction => ({
 
 export const getUsers =
   () =>
-  async (dispatch: AppDispatch): Promise<any> => {
+  async (dispatch: AppDispatch, getState: () => RootState): Promise<any> => {
+    const { usersReducers } = getState();
+    if (usersReducers.users.length !== 0) return;
+
     const response = await makeRequest({
       url: "https://my-json-server.typicode.com/karolkproexe/jsonplaceholderdb/data",
     });

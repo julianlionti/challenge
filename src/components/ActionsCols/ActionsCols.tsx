@@ -1,8 +1,9 @@
 import { Button, TableCell } from "@mui/material";
-import { useCustomTableCtx } from "../../providers/CustomTableProvider/useCustomTableProvider";
+import { ActionColsProps, useActionsCols } from "./useActionsCols";
 
-const ActionsCols = () => {
-  const { onDelete, onEdit, ...quepasa } = useCustomTableCtx();
+const ActionsCols: React.FC<ActionColsProps> = (props) => {
+  const { onDelete, onEdit, data } = useActionsCols(props);
+
   if (!onDelete && !onEdit) return null;
   return (
     <>
