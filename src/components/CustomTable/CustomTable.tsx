@@ -10,11 +10,10 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import {
-  CustomTableCtx,
-  CustomTableProps,
-  useCustomTable,
-} from "./useCustomTable";
+import CustomTableProvider from "../../providers/CustomTableProvider/CustomTableProvider";
+import ActionsCols from "../ActionsCols/ActionsCols";
+import Cell from "../Cell/Cell";
+import { CustomTableProps, useCustomTable } from "./useCustomTable";
 
 const Root = styled("div")`
   width: 100%;
@@ -25,36 +24,60 @@ const Title = styled(Typography)`
   flex: 1;
 `;
 
+const StripedBody = styled(TableBody)`
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+`;
+
+const DarkHeader = styled(TableCell)`
+  background-color: #f2f2f2;
+`;
+
 const CustomTable = <T,>(props: CustomTableProps<T>) => {
-  const { title, onAdd, headers, data, children } = useCustomTable(props);
-  console.log(data);
+  const { title, onAdd, headers, children, sharedCtx, data } =
+    useCustomTable(props);
+
   return (
-    // <CustomTableCtx.Provider value={data}>
-    <Root>
-      <Paper>
-        <Toolbar>
-          <Title variant="h6">{title}</Title>
-          {onAdd && <Button>Add</Button>}
-        </Toolbar>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {headers.map((title) => (
-                <TableCell key={title}>{title}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((rowData: any) => (
-              <TableRow key={rowData.id}>
-                {children.map((cols) => cols)}
+    <CustomTableProvider {...sharedCtx}>
+      <Root>
+        <Paper>
+          <Toolbar>
+            <Title variant="h6">{title}</Title>
+            {onAdd && (
+              <Button variant="contained" onClick={onAdd}>
+                Add new user
+              </Button>
+            )}
+          </Toolbar>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {headers.map((title) => (
+                  <DarkHeader align="center" key={title}>
+                    {title}
+                  </DarkHeader>
+                ))}
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
-    </Root>
-    // </CustomTableCtx.Provider>
+            </TableHead>
+            <StripedBody>
+              {data.map((rowData: any, index) => (
+                <TableRow key={rowData.id}>
+                  {children.map((cols) => (
+                    <Cell
+                      key={cols.props.bindKey}
+                      {...cols.props}
+                      index={index}
+                    />
+                  ))}
+                  <ActionsCols />
+                </TableRow>
+              ))}
+            </StripedBody>
+          </Table>
+        </Paper>
+      </Root>
+    </CustomTableProvider>
   );
 };
 

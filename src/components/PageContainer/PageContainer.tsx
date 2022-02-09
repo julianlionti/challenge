@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 import Header from "../Header/Header";
 import { PageContainerProps } from "./usePageContainer";
 
@@ -17,14 +17,22 @@ const Centered = styled("div")`
   width: 80%;
 `;
 
+const Title = styled(Typography)`
+  margin-top: 16px;
+  margin-bottom: 16px;
+`;
+
 const PageContainer: React.FC<PageContainerProps> = (props) => {
-  const { children } = props;
+  const { children, withBack, title } = props;
 
   return (
     <Root>
-      <Header />
+      <Header withBack={withBack} />
       <Container>
-        <Centered>{children}</Centered>
+        <Centered>
+          <Title variant="h3">{title}</Title>
+          {children}
+        </Centered>
       </Container>
     </Root>
   );

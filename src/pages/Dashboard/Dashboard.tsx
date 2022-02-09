@@ -5,18 +5,16 @@ import PageContainer from "../../components/PageContainer/PageContainer";
 import { useDashboard } from "./useDashboard";
 
 const Dashboard = () => {
-  const { onAddUser, data } = useDashboard();
+  const { onAddUser, onEditUser, data } = useDashboard();
 
   return (
-    <PageContainer>
-      <Typography variant="h4" component="h1">
-        Dashboard
-      </Typography>
+    <PageContainer title="Dashboard">
       <CustomTable
+        rowKey="id"
         title="User list"
         onAdd={onAddUser}
         onDelete={onAddUser}
-        onEdit={onAddUser}
+        onEdit={onEditUser}
         data={data}
       >
         <ColumnTemplate bindKey="id">ID</ColumnTemplate>

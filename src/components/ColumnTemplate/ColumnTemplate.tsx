@@ -1,9 +1,6 @@
-import { TableCell } from "@mui/material";
-import { ColumnTemplateProps } from "./useColumnTemplate";
+export interface ColumnTemplateProps {
+  bindKey: string;
+  renderColumn?: (value: any, row: any) => JSX.Element;
+}
 
-export const ColumnTemplate: React.FC<ColumnTemplateProps> = (props) => {
-  const { renderColumn } = props;
-
-  const finalVal = (renderColumn && renderColumn("", "")) || "Sarasa";
-  return <TableCell>{finalVal}</TableCell>;
-};
+export const ColumnTemplate: React.FC<ColumnTemplateProps> = () => null;
