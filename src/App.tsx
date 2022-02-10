@@ -1,3 +1,4 @@
+import React from 'react'
 import { Provider } from 'react-redux'
 import { persistor, store } from './store/store'
 import { BrowserRouter } from 'react-router-dom'

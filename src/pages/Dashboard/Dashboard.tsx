@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button } from '@mui/material'
 import { ColumnTemplate } from '../../components/ColumnTemplate/ColumnTemplate'
 import CustomModal from '../../components/CustomModal/CustomModal'

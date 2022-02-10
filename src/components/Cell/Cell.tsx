@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { CellProps, useCell } from './useCell'
 import { TableCell } from '@mui/material'
 

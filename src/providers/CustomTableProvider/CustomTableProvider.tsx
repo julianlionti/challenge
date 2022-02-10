@@ -1,3 +1,4 @@
+import React from 'react'
 import { CustomTableCtx, CustomTableCtxState } from './useCustomTableProvider'
 
 const CustomTableProvider: React.FC<CustomTableCtxState> = (props) => {

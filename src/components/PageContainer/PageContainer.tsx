@@ -1,3 +1,4 @@
+import React from 'react'
 import { Box, styled, Typography } from '@mui/material'
 import { PageContainerProps } from './usePageContainer'
 

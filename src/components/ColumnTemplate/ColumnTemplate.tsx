@@ -1,3 +1,5 @@
+import React from 'react'
+
 export interface ColumnTemplateProps {
   bindKey: string
   renderColumn?: (value: any, row: any) => JSX.Element

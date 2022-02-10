@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Button,
   Collapse,
@@ -17,7 +18,6 @@ import ActionsCols from '../ActionsCols/ActionsCols'
 import Cell from '../Cell/Cell'
 import TableHeaderCell from '../TableHeaderCell/TableHeaderCell'
 import { CustomTableProps, useCustomTable } from './useCustomTable'
-import { Scrollbars } from 'react-custom-scrollbars'
 
 const Root = styled('div')`
   width: 100%;
@@ -38,7 +38,6 @@ const CustomTable = <T,>(props: CustomTableProps<T>) => {
     data,
     loading,
     emptyListLegend,
-    height,
   } = useCustomTable(props)
 
   return (
@@ -56,38 +55,36 @@ const CustomTable = <T,>(props: CustomTableProps<T>) => {
           <Collapse in={loading}>
             <LinearProgress />
           </Collapse>
-          <Scrollbars style={{ width: '100%', height }}>
-            <Table stickyHeader>
-              <TableHead>
-                <TableRow>
-                  {headers.map((headerType) => (
-                    <TableHeaderCell key={headerType.title} {...headerType} />
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {!loading && data?.length === 0 && emptyListLegend && (
-                  <TableRow>
-                    <TableCell align='center' colSpan={children.length + 2}>
-                      {emptyListLegend}
-                    </TableCell>
-                  </TableRow>
-                )}
-                {data.map((rowData: any, index) => (
-                  <TableRow key={rowData.id}>
-                    {children.map((cols) => (
-                      <Cell
-                        key={cols.props.bindKey}
-                        {...cols.props}
-                        index={index}
-                      />
-                    ))}
-                    <ActionsCols index={index} />
-                  </TableRow>
+          <Table stickyHeader>
+            <TableHead>
+              <TableRow>
+                {headers.map((headerType) => (
+                  <TableHeaderCell key={headerType.title} {...headerType} />
                 ))}
-              </TableBody>
-            </Table>
-          </Scrollbars>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {!loading && data?.length === 0 && emptyListLegend && (
+                <TableRow>
+                  <TableCell align='center' colSpan={children.length + 2}>
+                    {emptyListLegend}
+                  </TableCell>
+                </TableRow>
+              )}
+              {data.map((rowData: any, index) => (
+                <TableRow key={rowData.id}>
+                  {children.map((cols) => (
+                    <Cell
+                      key={cols.props.bindKey}
+                      {...cols.props}
+                      index={index}
+                    />
+                  ))}
+                  <ActionsCols index={index} />
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </Paper>
       </Root>
     </CustomTableProvider>
