@@ -28,12 +28,6 @@ const Title = styled(Typography)`
   flex: 1;
 `
 
-// const StripedBody = styled(TableBody)`
-//   tr:nth-of-type(even) {
-//     background-color: #f2f2f2;
-//   }
-// `;
-
 const CustomTable = <T,>(props: CustomTableProps<T>) => {
   const {
     title,
