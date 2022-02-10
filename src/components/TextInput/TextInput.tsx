@@ -8,7 +8,7 @@ import {
 import { TextInputProps, useTextInput } from "./useTextInput";
 
 const TextInput: React.FC<TextInputProps> = (props) => {
-  const { title, placeholder, error, inputProps, hasError } =
+  const { title, placeholder, error, inputProps, hasError, loading } =
     useTextInput(props);
 
   return (
@@ -20,6 +20,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
         <OutlinedInput
           error={hasError}
           fullWidth
+          disabled={loading}
           placeholder={placeholder}
           {...inputProps}
         />

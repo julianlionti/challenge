@@ -15,18 +15,26 @@ export const makeRequest: MakeRequestFunc = async (config) => {
   if (!config.url) throw Error("url must be set on request");
   const { url } = config;
   const { dispatch } = store;
-  dispatch(setRequest(url));
-  if (!config.method) {
-    config.method = "GET";
+  const finalMethod = config.method || "GET";
+  const finalUrlKey = `${finalMethod}:${url}`;
+
+  dispatch(setRequest(finalUrlKey));
+  config.method = finalMethod;
+
+  const fakeLoading = new Promise((res) => setTimeout(res, 1000));
+  await fakeLoading;
+
+  if (finalMethod === "PUT") {
+    dispatch(removeRequest(finalUrlKey));
+    return config.data;
   }
 
   try {
     const { data } = await axiosInstance(config);
-    dispatch(removeRequest(url));
+    dispatch(removeRequest(finalUrlKey));
     return data;
   } catch (err) {
     const axiosError = err as AxiosError;
-    console.log(axiosError);
-    dispatch(removeRequest(url));
+    dispatch(removeRequest(finalUrlKey));
   }
 };

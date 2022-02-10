@@ -1,4 +1,11 @@
-import { Box, Card, CardContent, Divider, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  LinearProgress,
+  Typography,
+} from "@mui/material";
 import { Formik } from "formik";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import PageContainer from "../../components/PageContainer/PageContainer";
@@ -6,12 +13,19 @@ import TextInput from "../../components/TextInput/TextInput";
 import { useUserCreation } from "./useUserCreation";
 
 const UserCreation = () => {
-  const { title, initialValues, onSubmit, validationSchema, goBack } =
-    useUserCreation();
+  const {
+    title,
+    initialValues,
+    onSubmit,
+    validationSchema,
+    goBack,
+    isLoading,
+  } = useUserCreation();
 
   return (
     <PageContainer withBack title={"Dashboard"}>
       <Card>
+        {isLoading && <LinearProgress />}
         <CardContent>
           <Typography variant="h6" gutterBottom>
             {title}
@@ -25,13 +39,19 @@ const UserCreation = () => {
             onSubmit={onSubmit}
           >
             <Box>
-              <TextInput id="name" title="Name" placeholder="John Smith" />
               <TextInput
+                id="name"
+                title="Name"
+                placeholder="John Smith"
+                loading={isLoading}
+              />
+              <TextInput
+                loading={isLoading}
                 id="email"
                 title="Email"
                 placeholder="jsmith@proexe.pl"
               />
-              <FormButtons onCancel={goBack} />
+              <FormButtons onCancel={goBack} loading={isLoading} />
             </Box>
           </Formik>
         </CardContent>

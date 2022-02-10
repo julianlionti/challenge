@@ -8,14 +8,14 @@ const ActionsCols: React.FC<ActionColsProps> = (props) => {
   return (
     <>
       {onEdit && (
-        <TableCell>
+        <TableCell align="center">
           <Button variant="contained" color="warning" onClick={onEdit}>
             Edit
           </Button>
         </TableCell>
       )}
       {onDelete && (
-        <TableCell>
+        <TableCell align="center">
           <Button variant="contained" color="error" onClick={onDelete}>
             Delete
           </Button>

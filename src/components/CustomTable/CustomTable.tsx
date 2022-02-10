@@ -1,5 +1,7 @@
 import {
   Button,
+  Collapse,
+  LinearProgress,
   Paper,
   styled,
   Table,
@@ -13,6 +15,7 @@ import {
 import CustomTableProvider from "../../providers/CustomTableProvider/CustomTableProvider";
 import ActionsCols from "../ActionsCols/ActionsCols";
 import Cell from "../Cell/Cell";
+import TableHeaderCell from "../TableHeaderCell/TableHeaderCell";
 import { CustomTableProps, useCustomTable } from "./useCustomTable";
 
 const Root = styled("div")`
@@ -30,13 +33,17 @@ const StripedBody = styled(TableBody)`
   }
 `;
 
-const DarkHeader = styled(TableCell)`
-  background-color: #f2f2f2;
-`;
-
 const CustomTable = <T,>(props: CustomTableProps<T>) => {
-  const { title, onAdd, headers, children, sharedCtx, data } =
-    useCustomTable(props);
+  const {
+    title,
+    onAdd,
+    headers,
+    children,
+    sharedCtx,
+    data,
+    loading,
+    emptyListLegend,
+  } = useCustomTable(props);
 
   return (
     <CustomTableProvider {...sharedCtx}>
@@ -50,17 +57,25 @@ const CustomTable = <T,>(props: CustomTableProps<T>) => {
               </Button>
             )}
           </Toolbar>
+          <Collapse in={loading}>
+            <LinearProgress />
+          </Collapse>
           <Table>
             <TableHead>
               <TableRow>
-                {headers.map((title) => (
-                  <DarkHeader align="center" key={title}>
-                    {title}
-                  </DarkHeader>
+                {headers.map((headerType) => (
+                  <TableHeaderCell key={headerType.title} {...headerType} />
                 ))}
               </TableRow>
             </TableHead>
             <StripedBody>
+              {!loading && data?.length === 0 && emptyListLegend && (
+                <TableRow>
+                  <TableCell align="center" colSpan={children.length + 2}>
+                    {emptyListLegend}
+                  </TableCell>
+                </TableRow>
+              )}
               {data.map((rowData: any, index) => (
                 <TableRow key={rowData.id}>
                   {children.map((cols) => (

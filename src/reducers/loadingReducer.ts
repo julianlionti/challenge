@@ -1,5 +1,6 @@
 import { Reducer } from "redux";
 import { LoadingActions } from "../actions/loadingActions";
+import { useAppSelector } from "../hooks/redux";
 
 export interface ILoadingState {
   requests: string[];
@@ -28,4 +29,6 @@ const loadingReducer: LoadingReducer = (state = initialState, action) => {
   }
 };
 
+export const useLoadingState = () =>
+  useAppSelector(({ loadingReducer }) => loadingReducer);
 export default loadingReducer;

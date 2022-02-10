@@ -4,6 +4,7 @@ export interface TextInputProps {
   id: string;
   title: string;
   placeholder?: string;
+  loading?: boolean;
 }
 
 export const useTextInput = (props: TextInputProps) => {
