@@ -1,7 +1,4 @@
-import {
-  SortType,
-  useCustomTableCtx,
-} from "../../providers/CustomTableProvider/useCustomTableProvider";
+import { useCustomTableCtx } from "../../providers/CustomTableProvider/useCustomTableProvider";
 
 export interface HeaderType {
   title: string;
@@ -19,9 +16,9 @@ export const useTableHeaderCell = (props: TableHeaderCellProps) => {
         const actualSort = sortConfiguration[bindKey];
         switch (actualSort) {
           case "":
-            return "asc";
-          case "asc":
             return "desc";
+          case "desc":
+            return "asc";
           default:
             return "";
         }
