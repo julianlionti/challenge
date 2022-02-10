@@ -1,9 +1,9 @@
-import { Button, Typography } from "@mui/material";
-import { ColumnTemplate } from "../../components/ColumnTemplate/ColumnTemplate";
-import CustomModal from "../../components/CustomModal/CustomModal";
-import CustomTable from "../../components/CustomTable/CustomTable";
-import PageContainer from "../../components/PageContainer/PageContainer";
-import { useDashboard } from "./useDashboard";
+import { Button, Typography } from '@mui/material'
+import { ColumnTemplate } from '../../components/ColumnTemplate/ColumnTemplate'
+import CustomModal from '../../components/CustomModal/CustomModal'
+import CustomTable from '../../components/CustomTable/CustomTable'
+import PageContainer from '../../components/PageContainer/PageContainer'
+import { useDashboard } from './useDashboard'
 
 const Dashboard = () => {
   const {
@@ -19,13 +19,13 @@ const Dashboard = () => {
     isLoadingDelete,
     onSortUsers,
     sortConfiguration,
-  } = useDashboard();
+  } = useDashboard()
   return (
-    <PageContainer title="Dashboard">
+    <PageContainer title='Dashboard'>
       <CustomTable
         loading={isLoadingGet}
-        rowKey="id"
-        title="User list"
+        rowKey='id'
+        title='User list'
         onAdd={onAddUser}
         onDelete={onDeleteUser}
         onEdit={onEditUser}
@@ -33,20 +33,20 @@ const Dashboard = () => {
         sortConfiguration={sortConfiguration}
         data={data}
         height={450}
-        emptyListLegend={"There are no users to show in table"}
+        emptyListLegend={'There are no users to show in table'}
       >
-        <ColumnTemplate bindKey="id">ID</ColumnTemplate>
-        <ColumnTemplate bindKey="name">Name</ColumnTemplate>
-        <ColumnTemplate bindKey="username" sortable>
+        <ColumnTemplate bindKey='id'>ID</ColumnTemplate>
+        <ColumnTemplate bindKey='name'>Name</ColumnTemplate>
+        <ColumnTemplate bindKey='username' sortable>
           Username
         </ColumnTemplate>
-        <ColumnTemplate bindKey="email">Email</ColumnTemplate>
-        <ColumnTemplate bindKey="address.city">City</ColumnTemplate>
+        <ColumnTemplate bindKey='email'>Email</ColumnTemplate>
+        <ColumnTemplate bindKey='address.city'>City</ColumnTemplate>
       </CustomTable>
       <CustomModal
         loading={isLoadingDelete}
         show={showDeleteConfirmation}
-        title="Delete user confirmation"
+        title='Delete user confirmation'
         message={`You are about to remove the user '${userToBeDelete?.email}'. Are you sure?`}
         ActionBtn={
           <Button disabled={isLoadingDelete} onClick={confirmDelete}>
@@ -56,7 +56,7 @@ const Dashboard = () => {
         onClose={toggleDeleteConfirmation}
       />
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
