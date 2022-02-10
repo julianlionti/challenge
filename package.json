@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -47,5 +48,8 @@
     "prettier": "^2.5.1",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
+  },
+  "resolutions": {
+    "react": "^17.0.2"
   }
 }
