@@ -1,11 +1,11 @@
-import { useFormikContext } from "formik";
+import { useFormikContext } from 'formik'
 
 export interface FormButtonProps {
-  onCancel: () => void;
-  loading?: boolean;
+  onCancel: () => void
+  loading?: boolean
 }
 
 export const useFormButtons = (props: FormButtonProps) => {
-  const { submitForm } = useFormikContext();
-  return { submitForm, ...props };
-};
+  const { submitForm } = useFormikContext()
+  return { submitForm, ...props }
+}

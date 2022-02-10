@@ -1,5 +1,5 @@
 export interface ICompany {
-  name: string;
-  catchPhrase: string;
-  bs: string;
+  name: string
+  catchPhrase: string
+  bs: string
 }

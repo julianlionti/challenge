@@ -1,12 +1,12 @@
-import { Provider } from "react-redux";
-import { persistor, store } from "./store/store";
-import { BrowserRouter } from "react-router-dom";
-import Main from "./routes/Main";
-import { CssBaseline } from "@mui/material";
-import { injectStore } from "./utils/makeRequest";
-import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from 'react-redux'
+import { persistor, store } from './store/store'
+import { BrowserRouter } from 'react-router-dom'
+import Main from './routes/Main'
+import { CssBaseline } from '@mui/material'
+import { injectStore } from './utils/makeRequest'
+import { PersistGate } from 'redux-persist/integration/react'
 
-injectStore(store);
+injectStore(store)
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

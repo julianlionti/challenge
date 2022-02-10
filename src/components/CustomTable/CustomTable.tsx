@@ -11,22 +11,22 @@ import {
   TableRow,
   Toolbar,
   Typography,
-} from "@mui/material";
-import CustomTableProvider from "../../providers/CustomTableProvider/CustomTableProvider";
-import ActionsCols from "../ActionsCols/ActionsCols";
-import Cell from "../Cell/Cell";
-import TableHeaderCell from "../TableHeaderCell/TableHeaderCell";
-import { CustomTableProps, useCustomTable } from "./useCustomTable";
-import { Scrollbars } from "react-custom-scrollbars";
+} from '@mui/material'
+import CustomTableProvider from '../../providers/CustomTableProvider/CustomTableProvider'
+import ActionsCols from '../ActionsCols/ActionsCols'
+import Cell from '../Cell/Cell'
+import TableHeaderCell from '../TableHeaderCell/TableHeaderCell'
+import { CustomTableProps, useCustomTable } from './useCustomTable'
+import { Scrollbars } from 'react-custom-scrollbars'
 
-const Root = styled("div")`
+const Root = styled('div')`
   width: 100%;
   margin-top: 8px;
-`;
+`
 
 const Title = styled(Typography)`
   flex: 1;
-`;
+`
 
 // const StripedBody = styled(TableBody)`
 //   tr:nth-of-type(even) {
@@ -45,16 +45,16 @@ const CustomTable = <T,>(props: CustomTableProps<T>) => {
     loading,
     emptyListLegend,
     height,
-  } = useCustomTable(props);
+  } = useCustomTable(props)
 
   return (
     <CustomTableProvider {...sharedCtx}>
       <Root>
         <Paper>
           <Toolbar>
-            <Title variant="h6">{title}</Title>
+            <Title variant='h6'>{title}</Title>
             {onAdd && (
-              <Button variant="contained" onClick={onAdd}>
+              <Button variant='contained' onClick={onAdd}>
                 Add new user
               </Button>
             )}
@@ -62,7 +62,7 @@ const CustomTable = <T,>(props: CustomTableProps<T>) => {
           <Collapse in={loading}>
             <LinearProgress />
           </Collapse>
-          <Scrollbars style={{ width: "100%", height }}>
+          <Scrollbars style={{ width: '100%', height }}>
             <Table stickyHeader>
               <TableHead>
                 <TableRow>
@@ -74,7 +74,7 @@ const CustomTable = <T,>(props: CustomTableProps<T>) => {
               <TableBody>
                 {!loading && data?.length === 0 && emptyListLegend && (
                   <TableRow>
-                    <TableCell align="center" colSpan={children.length + 2}>
+                    <TableCell align='center' colSpan={children.length + 2}>
                       {emptyListLegend}
                     </TableCell>
                   </TableRow>
@@ -97,7 +97,7 @@ const CustomTable = <T,>(props: CustomTableProps<T>) => {
         </Paper>
       </Root>
     </CustomTableProvider>
-  );
-};
+  )
+}
 
-export default CustomTable;
+export default CustomTable
