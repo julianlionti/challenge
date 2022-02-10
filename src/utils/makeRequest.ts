@@ -3,7 +3,7 @@ import { Store } from "redux";
 import { removeRequest, setRequest } from "../actions/loadingActions";
 
 let store: Store;
-export const injectStore = (_store: Store) => {
+export const injectStore = (_store: Store<any, any>) => {
   store = _store;
 };
 
