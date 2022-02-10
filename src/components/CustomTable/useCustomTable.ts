@@ -9,6 +9,7 @@ export interface CustomTableProps<T> extends SharedTableState<T> {
   renderItem?: () => void;
   children: JSX.Element[];
   emptyListLegend?: string;
+  height?: number;
 }
 
 export const useCustomTable = <T>(props: CustomTableProps<T>) => {
@@ -26,14 +27,10 @@ export const useCustomTable = <T>(props: CustomTableProps<T>) => {
   }, []);
 
   return {
-    title,
     onAdd,
     headers,
-    data,
-    children,
-    rowKey,
     sharedCtx,
     loading,
-    emptyListLegend,
+    ...props,
   };
 };

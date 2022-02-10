@@ -32,6 +32,7 @@ const Dashboard = () => {
         onSort={onSortUsers}
         sortConfiguration={sortConfiguration}
         data={data}
+        height={450}
         emptyListLegend={"There are no users to show in table"}
       >
         <ColumnTemplate bindKey="id">ID</ColumnTemplate>

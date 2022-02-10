@@ -1,9 +1,9 @@
-import { styled, Typography } from "@mui/material";
-import Header from "../Header/Header";
+import { Box, styled, Typography } from "@mui/material";
 import { PageContainerProps } from "./usePageContainer";
 
-const Root = styled("div")`
-  height: 100vh;
+const Root = styled(Box)`
+  /* height: 100%; */
+  flex: 1;
 `;
 
 const Container = styled("main")`
@@ -15,6 +15,7 @@ const Container = styled("main")`
 
 const Centered = styled("div")`
   width: 80%;
+  padding-bottom: 36px;
 `;
 
 const Title = styled(Typography)`
@@ -23,14 +24,15 @@ const Title = styled(Typography)`
 `;
 
 const PageContainer: React.FC<PageContainerProps> = (props) => {
-  const { children, withBack, title } = props;
+  const { children, title } = props;
 
   return (
-    <Root>
-      <Header withBack={withBack} />
+    <Root sx={{ bgcolor: "background.default" }}>
       <Container>
         <Centered>
-          <Title variant="h3">{title}</Title>
+          <Title sx={{ color: "text.primary" }} variant="h3">
+            {title}
+          </Title>
           {children}
         </Centered>
       </Container>

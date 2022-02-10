@@ -1,16 +1,15 @@
-import { Box, TableCell, TableSortLabel } from "@mui/material";
-import { styled } from "@mui/system";
+import { TableCell, TableSortLabel } from "@mui/material";
 import { TableHeaderCellProps, useTableHeaderCell } from "./useTableHeaderCell";
-
-const DarkHeader = styled(TableCell)`
-  background-color: #f2f2f2;
-`;
 
 const TableHeaderCell = (props: TableHeaderCellProps) => {
   const { title, handleOnSort, isSortable, isActive, direction } =
     useTableHeaderCell(props);
   return (
-    <DarkHeader align="center" key={title}>
+    <TableCell
+      sx={{ bgcolor: "grey.200", color: "black" }}
+      align="center"
+      key={title}
+    >
       {isSortable && (
         <TableSortLabel
           onClick={handleOnSort}
@@ -21,7 +20,7 @@ const TableHeaderCell = (props: TableHeaderCellProps) => {
         </TableSortLabel>
       )}
       {!isSortable && title}
-    </DarkHeader>
+    </TableCell>
   );
 };
 
