@@ -5,12 +5,12 @@ import {
   Divider,
   LinearProgress,
   Typography,
-} from "@mui/material";
-import { Formik } from "formik";
-import FormButtons from "../../components/FormButtons/FormButtons";
-import PageContainer from "../../components/PageContainer/PageContainer";
-import TextInput from "../../components/TextInput/TextInput";
-import { useUserCreation } from "./useUserCreation";
+} from '@mui/material'
+import { Formik } from 'formik'
+import FormButtons from '../../components/FormButtons/FormButtons'
+import PageContainer from '../../components/PageContainer/PageContainer'
+import TextInput from '../../components/TextInput/TextInput'
+import { useUserCreation } from './useUserCreation'
 
 const UserCreation = () => {
   const {
@@ -20,14 +20,14 @@ const UserCreation = () => {
     validationSchema,
     goBack,
     isLoading,
-  } = useUserCreation();
+  } = useUserCreation()
 
   return (
-    <PageContainer withBack title={"Dashboard"}>
+    <PageContainer withBack title={'Dashboard'}>
       <Card>
         {isLoading && <LinearProgress />}
         <CardContent>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant='h6' gutterBottom>
             {title}
           </Typography>
         </CardContent>
@@ -40,16 +40,16 @@ const UserCreation = () => {
           >
             <Box>
               <TextInput
-                id="name"
-                title="Name"
-                placeholder="John Smith"
+                id='name'
+                title='Name'
+                placeholder='John Smith'
                 loading={isLoading}
               />
               <TextInput
                 loading={isLoading}
-                id="email"
-                title="Email"
-                placeholder="jsmith@proexe.pl"
+                id='email'
+                title='Email'
+                placeholder='jsmith@proexe.pl'
               />
               <FormButtons onCancel={goBack} loading={isLoading} />
             </Box>
@@ -57,7 +57,7 @@ const UserCreation = () => {
         </CardContent>
       </Card>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default UserCreation;
+export default UserCreation

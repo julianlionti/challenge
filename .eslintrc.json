@@ -20,6 +20,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "globals": {
+    "React": true,
+    "JSX": true
+  },
   "plugins": ["react", "@typescript-eslint", "react-hooks"],
-  "rules": {}
+  "rules": {
+    "react/prop-types": "off"
+  }
 }

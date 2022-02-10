@@ -1,13 +1,13 @@
-import { TableCell, TableSortLabel } from "@mui/material";
-import { TableHeaderCellProps, useTableHeaderCell } from "./useTableHeaderCell";
+import { TableCell, TableSortLabel } from '@mui/material'
+import { TableHeaderCellProps, useTableHeaderCell } from './useTableHeaderCell'
 
 const TableHeaderCell = (props: TableHeaderCellProps) => {
   const { title, handleOnSort, isSortable, isActive, direction } =
-    useTableHeaderCell(props);
+    useTableHeaderCell(props)
   return (
     <TableCell
-      sx={{ bgcolor: "grey.200", color: "black" }}
-      align="center"
+      sx={{ bgcolor: 'grey.200', color: 'black' }}
+      align='center'
       key={title}
     >
       {isSortable && (
@@ -21,7 +21,7 @@ const TableHeaderCell = (props: TableHeaderCellProps) => {
       )}
       {!isSortable && title}
     </TableCell>
-  );
-};
+  )
+}
 
-export default TableHeaderCell;
+export default TableHeaderCell

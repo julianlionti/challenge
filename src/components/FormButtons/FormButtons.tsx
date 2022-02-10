@@ -1,15 +1,15 @@
-import { Box, Button } from "@mui/material";
-import { FormButtonProps, useFormButtons } from "./useFormButtons";
+import { Box, Button } from '@mui/material'
+import { FormButtonProps, useFormButtons } from './useFormButtons'
 
 const FormButtons: React.FC<FormButtonProps> = (props) => {
-  const { submitForm, onCancel, loading } = useFormButtons(props);
+  const { submitForm, onCancel, loading } = useFormButtons(props)
   return (
-    <Box display="flex" justifyContent="flex-end" mt={4}>
+    <Box display='flex' justifyContent='flex-end' mt={4}>
       <Button
         disabled={loading}
         onClick={onCancel}
-        variant="outlined"
-        color="warning"
+        variant='outlined'
+        color='warning'
       >
         Cancel
       </Button>
@@ -17,13 +17,13 @@ const FormButtons: React.FC<FormButtonProps> = (props) => {
       <Button
         disabled={loading}
         onClick={submitForm}
-        variant="contained"
-        color="success"
+        variant='contained'
+        color='success'
       >
         Submit
       </Button>
     </Box>
-  );
-};
+  )
+}
 
-export default FormButtons;
+export default FormButtons
